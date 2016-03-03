@@ -1,7 +1,7 @@
 express = require 'express'
-router = express.Router()
+utils = require '../utils'
 
-# GET home page.
+router = express.Router()
 
 router.get '/', (req, res) ->
   res.render 'index', { title: 'Express' }
