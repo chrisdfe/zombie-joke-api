@@ -19,7 +19,6 @@
   "devDependencies": {
     "bluebird": "^3.3.3",
     "cheerio": "^0.20.0",
-    "coffee-script": "^1.9.1",
     "gulp": "^3.9.0",
     "gulp-livereload": "^3.8.0",
     "gulp-nodemon": "^2.0.2",
