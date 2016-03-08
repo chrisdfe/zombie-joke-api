@@ -7,18 +7,26 @@ const expect = chai.expect;
 const should = chai.should();
 
 function testSentences(sentences) {
-  for (var sentence of sentences) {
-    let result = getPunchline(sentence.input);
-    result.length.should.equal(sentence.punchlines.length);
+  console.log('sentences', sentences);
 
-    for (let i = 0; i < sentence.punchlines.length; i++) {
-      expect(result[i]).not.be.undefined;
-      expect(sentence.punchlines).to.contain(result[i]);
+  for (let sentence of sentences) {
+    let results = getPunchline(sentence.input);
+
+    for (let i = 0; i < results.length; i++) {
+      let punchline = results[i];
+
+      it('- existence', function() {
+        expect(punchline).not.be.undefined;
+      });
+
+      it('- correct formatting', function() {
+        expect(sentence.punchlines).to.contain(results[i]);
+      });
     }
   }
 }
 
-describe('Get Punchline', function() {
+describe('getPunchline', function() {
 
   it('exists', function() {
     should.exist(getPunchline);
@@ -33,8 +41,8 @@ describe('Get Punchline', function() {
     result.should.be.an('array');
   });
 
-  describe('detects punchlines correctly', function() {
-    it('for basic punchlines', function() {
+  describe('should detect punchlines correctly', function() {
+    context('for basic punchlines', function() {
       testSentences([
         {
           input: 'You forgot your HEAD because it wasn\'t attached!',
@@ -51,7 +59,7 @@ describe('Get Punchline', function() {
       ]);
     });
 
-    it('for punchlines with punctutation', function() {
+    context('for punchlines with punctutation', function() {
       testSentences([
         {
           input: 'I\'m coming to get you, BARBARA!',
@@ -68,7 +76,7 @@ describe('Get Punchline', function() {
       ]);
     });
 
-    it('for mixed lower and uppercase words', function() {
+    context('for mixed lower and uppercase words', function() {
       testSentences([
         {
           input: "They use megaBITES!",
@@ -89,7 +97,7 @@ describe('Get Punchline', function() {
       ]);
     })
 
-    it('for multi-word punchlines', function() {
+    context('for multi-word punchlines', function() {
       testSentences([
         {
           input: "He had NO LEG to STAND ON!",

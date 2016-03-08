@@ -28,7 +28,8 @@ gulp.task('develop', function () {
 
 gulp.task('test', function() {
   return gulp.src('test/index.js', { read: false })
-      .pipe(mocha({reporter: 'nyan'}));
+      // .pipe(mocha({ reporter: 'nyan' }));
+      .pipe(mocha());
 });
 
 gulp.task('default', [
