@@ -1,4 +1,4 @@
-path = require 'path'
+/*path = require 'path'
 fs = require 'fs'
 _ = require 'lodash'
 Bluebird = require 'bluebird'
@@ -27,3 +27,6 @@ module.exports = ->
 
     data = JSON.stringify jokes, null, 4
     fs.writeFileSync path.resolve('./data/jokes.json'), data
+*/
+
+module.exports = {};
